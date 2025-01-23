@@ -6,14 +6,11 @@ The final sorted array should not be returned by the function, but instead be st
 
 nums2 has a length of n. */
 
+#include <stdio.h>
+#include <stdlib.h>
 
-#include <iostream>
-#include <vector>
-
-using namespace std;
-
-void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-    int last = m + n - 1;
+void merge(int* nums1, int nums1Size, int m, int* nums2, int n) {
+    int last = nums1Size - 1;
     int first = m - 1;
     int second = n - 1;
     if (n == 0)
@@ -31,13 +28,13 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         {
             if (nums1[first] < nums2[second])
             {
-                nums1.at(last) = nums2.at(second);
-                nums2.pop_back();
+                nums1[last] = nums2[second];
+                nums2[second] = 0;
                 last--;
                 second--;
             } else {
-                nums1.at(first + 1) = nums2.at(first);
-                nums1.at(first) = nums2.at(first - 1);
+                nums1[first + 1] = nums1[first];
+                nums1[first] = nums1[first - 1]; 
                 last--;
                 first--;
             }
@@ -47,29 +44,41 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 
 int main() {
 
-    vector<int> nums1 = {1, 2, 3, 0, 0, 0};
+    int nums1[] = {1, 2, 3, 0, 0, 0};
 
-    vector<int> nums2 = {2, 5, 6};
+    int nums2[] = {2, 5, 6};
 
-    merge(nums1, 3, nums2, 3);
+    int length1 = sizeof(nums1) / sizeof(nums1[0]);
 
-    cout << "Passed first test case! " << endl;
+    int length2 = sizeof(nums2) / sizeof(nums2[0]);
 
-    vector<int> nums1 = {1};
+    merge(nums1, 3, 6, nums2, 3);
 
-    vector<int> nums2 = {};
+    printf("Passed first test case! ");
 
-    merge(nums1, 1, nums2, 0);
+    int nums1[] = {1};
 
-    cout << "Passed second test case! " << endl;
+    int nums2[] = {0};
 
-    vector<int> nums1 = {0};
+    length1 = sizeof(nums1) / sizeof(nums1[0]);
 
-    vector<int> nums2 = {1};
+    length2 = sizeof(nums2) / sizeof(nums2[0]);
 
-    merge(nums1, 0, nums2, 1);
+    merge(nums1, 1, 1, nums2, 0);
 
-    cout << "Passed third test case! " << endl;
+    printf("Passed second test case! ");
+
+    int nums1[] = {0};
+
+    int nums2[] = {1};
+
+    length1 = sizeof(nums1) / sizeof(nums1[0]);
+
+    length2 = sizeof(nums2) / sizeof(nums2[0]);
+
+    merge(nums1, 0, 1, nums2, 1);
+
+    printf("Passed third test case! ");
 
     return 0;
 }
