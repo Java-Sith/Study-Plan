@@ -36,8 +36,8 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
                 last--;
                 second--;
             } else {
-                nums1.at(first + 1) = nums2.at(first);
-                nums1.at(first) = nums2.at(first - 1);
+                nums1.at(first + 1) = nums1.at(first);
+                nums1.at(first) = nums1.at(first - 1);
                 last--;
                 first--;
             }
@@ -53,23 +53,43 @@ int main() {
 
     merge(nums1, 3, nums2, 3);
 
-    cout << "Passed first test case! " << endl;
+    cout << "Doing first test case! " << endl;
 
-    vector<int> nums1 = {1};
+    for (auto i : nums1)
+    {
+        cout << i << " ";
+    }
 
-    vector<int> nums2 = {};
+    cout << endl;
+
+    nums1 = {1};
+
+    nums2 = {};
 
     merge(nums1, 1, nums2, 0);
 
-    cout << "Passed second test case! " << endl;
+    cout << "Doing second test case! " << endl;
 
-    vector<int> nums1 = {0};
+    for (auto i : nums1)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
 
-    vector<int> nums2 = {1};
+    nums1 = {0};
+
+    nums2 = {1};
 
     merge(nums1, 0, nums2, 1);
 
-    cout << "Passed third test case! " << endl;
+    cout << "Doing third test case! " << endl;
+
+    for (auto i : nums1)
+    {
+        cout << i << " ";
+    }
+
+    cout << endl;
 
     return 0;
 }

@@ -20,7 +20,7 @@ int removeElement(vector<int>& nums, int val) {
     int last = nums.size() - 1;
     for (int i = 0; i < nums.size(); i++)
     {
-        if (last < k)
+        if (last == k)
         {
             break;
         }
@@ -33,6 +33,7 @@ int removeElement(vector<int>& nums, int val) {
             }
             nums.at(i) = nums.at(last);
             nums.at(last) = temp;
+            k++;
         } else {
             k++;
         }
@@ -50,14 +51,16 @@ int main() {
 
     int k = removeElement(nums, val);
 
-    assert(k == expectedNums.size())
+    assert(k == expectedNums.size());
 
-    sort(nums, 0, k);
+    //sort(nums.begin(), nums.begin() + k);
 
     for (int i = 0; i < k; i++)
     {
         assert(nums[i] == expectedNums[i]);
     }
+
+    cout << "All test cases pass!" << endl;
 
     return 0;
 }

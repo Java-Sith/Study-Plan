@@ -52,33 +52,54 @@ int main() {
 
     int length2 = sizeof(nums2) / sizeof(nums2[0]);
 
-    merge(nums1, 3, 6, nums2, 3);
+    merge(nums1, 6, 3, nums2, 3);
 
-    printf("Passed first test case! ");
+    printf("Doing first test case!\n");
 
-    int nums1[] = {1};
+    for (int i = 0; i < length1; i++)
+    {
+        printf("%d ", nums1[i]);
+    }
 
-    int nums2[] = {0};
+    printf("\n");
+    
+    int nums3[] = {1};
 
-    length1 = sizeof(nums1) / sizeof(nums1[0]);
+    int nums4[] = {0};
 
-    length2 = sizeof(nums2) / sizeof(nums2[0]);
+    length1 = sizeof(nums3) / sizeof(nums3[0]);
+
+    length2 = sizeof(nums4) / sizeof(nums4[0]);
 
     merge(nums1, 1, 1, nums2, 0);
 
-    printf("Passed second test case! ");
+    printf("Doing second test case!\n");
 
-    int nums1[] = {0};
+    for (int i = 0; i < length1; i++)
+    {
+        printf("%d ", nums3[i]);
+    }
 
-    int nums2[] = {1};
+    printf("\n");
 
-    length1 = sizeof(nums1) / sizeof(nums1[0]);
+    int nums5[] = {0};
 
-    length2 = sizeof(nums2) / sizeof(nums2[0]);
+    int nums6[] = {1};
 
-    merge(nums1, 0, 1, nums2, 1);
+    length1 = sizeof(nums5) / sizeof(nums5[0]);
 
-    printf("Passed third test case! ");
+    length2 = sizeof(nums6) / sizeof(nums6[0]);
+
+    merge(nums5, 1, 0, nums6, 1);
+
+    printf("Doing third test case!\n");
+
+    for (int i = 0; i < length1; i++)
+    {
+        printf("%d ", nums5[i]);
+    }
+
+    printf("\n");
 
     return 0;
 }

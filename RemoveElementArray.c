@@ -27,7 +27,7 @@ int removeElement(int* nums, int numsSize, int val) {
     int last = numsSize - 1;
     for (int i = 0; i < numsSize; i++)
     {
-        if (last < k)
+        if (last == k)
         {
             break;
         }
@@ -40,6 +40,7 @@ int removeElement(int* nums, int numsSize, int val) {
             }
             nums[i] = nums[last];
             nums[last] = temp;
+            k++;
         } else {
             k++;
         }
@@ -49,11 +50,11 @@ int removeElement(int* nums, int numsSize, int val) {
 
 int main() {
 
-    int nums[] = {3, 2, 2, 3};    
+    int nums[] = {0, 1, 2, 2, 3, 0, 4, 2};    
 
-    int val = 3;
+    int val = 2;
 
-    int expectedNums[] = {2, 2};
+    int expectedNums[] = {0, 1, 4, 0, 3};
 
     int length1 = sizeof(nums) / sizeof(nums[0]);
 
@@ -63,12 +64,14 @@ int main() {
 
     assert(k == length2);
 
-    qsort(nums, length1, sizeof(nums[0]), compare);
+    //qsort(nums, length1, sizeof(nums[0]), compare);
 
     for (int i = 0; i < length2; i++)
     {
         assert(nums[i] == expectedNums[i]);
     }
+
+    printf("All test cases pass!\n");
 
     return 0;
 }
